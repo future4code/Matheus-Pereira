@@ -132,3 +132,12 @@ td button {
 #back-button:hover {
     background-color: #635a3d
 }
+
+.comprar:hover {
+    background-color:peru;
+}
+
+.comprar:active{
+    text-decoration-color: white;
+    background-color:tomato;
+}
