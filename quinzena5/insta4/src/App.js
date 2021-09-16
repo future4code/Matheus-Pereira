@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import Postagem from './components/Postagem/Postagem';
 import Post from './components/Post/Post';
 
 const MainContainer = styled.div`
@@ -8,12 +9,19 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `
-
 class App extends React.Component {
+  state = {
+
+  }
+
+      
+
+
   render() {
     return (
       <MainContainer>
-        <Post
+        <Postagem/>
+           {/* <Post
           nomeUsuario={'paulinha'}
           fotoUsuario={'https://picsum.photos/50/50'}
           fotoPost={'https://picsum.photos/200/150'}
@@ -27,7 +35,8 @@ class App extends React.Component {
           nomeUsuario={'Zé'}
           fotoUsuario={'https://picsum.photos/50/80'}
           fotoPost={'https://picsum.photos/200/200'}
-        />
+        /> */}
+
       </MainContainer>
     );
   }
