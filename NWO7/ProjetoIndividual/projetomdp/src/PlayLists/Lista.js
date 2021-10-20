@@ -11,9 +11,19 @@ class Lista extends React.Component {
         musicas: []
     }
 
+    getAllPlayList = () =>{
+        axios
+        .get(url, header)
+        .then((res) => {
+          this.setState({ list: res.data.result.list});
+        })
+        .catch((err) => alert(err))
+    }
+
     deletarPlayList = (key) =>{
         axios.delete(url+"/"+key,header)
         .then((res) => {
+            this.getAllPlayList();
             alert("Playlist apagada com sucesso");
           })
           .catch((err) => alert("Não foi possível excluir a playlist"))
@@ -21,7 +31,6 @@ class Lista extends React.Component {
     }
 
     visualizarPlayList = (key) =>{
-        let local;
         axios
         .get(url+"/"+key+"/tracks", header)
         .then((res) => {
@@ -38,14 +47,13 @@ class Lista extends React.Component {
         });        
     }
 
+    componentDidMount(){
+        this.getAllPlayList();
+    }
+
     render() {
         lista = [];
-          axios
-            .get(url, header)
-            .then((res) => {
-              this.setState({ list: res.data.result.list});
-            })
-            .catch((err) => alert(err)) // é o que rola se der errado
+
         if(this.state.list){
             lista = this.state.list.map((list) => {
                 return <PlayListUnit>
