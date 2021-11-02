@@ -32,6 +32,7 @@ const onClickCurtida = () => {
     .post(url, body ,{ header })
     .then((res) => {
         //alert("Deu certo")
+        //
     })
     .catch((err) => alert(err))
 
