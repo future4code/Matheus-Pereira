@@ -1,24 +1,49 @@
+import { useNavigate } from "react-router";
+import GetTrips from "../Components/GetTrips";
+import { Botao, Formulario } from "../services/styled";
+
+
 /*Para o usuário se candidatar à viagens, página que vai ter o formulário de inscrição
 */
+function ApplicationFormPage () {
+    const navigate = useNavigate();
+    const  voltar = () => {
+        navigate(-1);
+    }
 
-function ApplicationFormPage(){
+    
+
+    const enviarForm = () => {
+        console.log("teste")
+        //navigate("/confirmacao")
+    }
+
+    let lista = GetTrips();
+    if(lista){
+        lista = lista.map((list) => {
+            return <option value={list.id}>{list.name}</option>
+        });
+    } else{
+        //alert("Algo deu errado, tente novamente mais tarde");
+        console.log("erro")
+    }
+
     return <div>
+        <button onClick = {voltar}>Voltar</button>
         <h1>Inscrever-se para uma viagem</h1>
-        <form>
+
+        <Formulario>
             <select>
-                <option value="" disabled="" selected="">Escolha uma Viagem</option>
-                <option value="">Comer jujuba em Júpiter</option>
-                <option value="">Pedido de casamento nos anéis de Saturno</option>
-                <option value="">viagem a jupiter</option>
-                <option value="">Direto para o futuro</option>
-                <option value="">Viagem para mercúrio</option>
-                <option value="">Viagem de ferias para mercurio</option>
-                <option value="">Pegar os que ficaram </option>
+                <option>Escolha uma Viagem</option>
+                {lista}
             </select>
             <input placeholder="Nome" name="name"/>
-                <button>Voltar</button>
-                <button type="submit">Enviar</button>
-        </form>
+            <input placeholder="Idade" name="age"/>
+            <input placeholder="Texto de Candidatura " name="applicationText"/>
+            <input placeholder="Profissão" name="profession"/>
+            <input placeholder="País" name="country"/>    
+                <Botao onClick={enviarForm}>Enviar</Botao>
+        </Formulario>
     </div>
 }
 
