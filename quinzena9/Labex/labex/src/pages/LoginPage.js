@@ -4,11 +4,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Login } from '../services/Login';
 
-    // npm install react-router-dom@5
-    // const history = useHistory();
-    // history.push("/trip-details")
-    // history.goBack()
-
 export default function LoginPage () {
 
     const navigate = useNavigate();

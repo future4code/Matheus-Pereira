@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router";
+import ApplytoTrip from "../Components/ApplytoTrip";
+import GetIdtoTrip from "../Components/GetIdtoTrip";
 import GetTrips from "../Components/GetTrips";
 import { Botao, Formulario } from "../services/styled";
+import useForm from "../services/useForm";
 
 
 /*Para o usuário se candidatar à viagens, página que vai ter o formulário de inscrição
@@ -10,11 +13,25 @@ function ApplicationFormPage () {
     const  voltar = () => {
         navigate(-1);
     }
+    const { form, onChange, cleanFields } = useForm({ 
+        name: "", 
+        age: 0, 
+        applicationText:"", 
+        profession: "",
+        country: ""
+     });
 
     
 
-    const enviarForm = () => {
-        console.log("teste")
+    const enviarForm = (event) => { 
+        event.prevent.default();
+        var select = document.getElementById('trip');
+        let id = GetIdtoTrip(select.options[select.selectedIndex].value)
+        alert(id);
+        
+        console.log(form);
+        ApplytoTrip({...form, [id] : id });
+        cleanFields();
         //navigate("/confirmacao")
     }
 
@@ -32,17 +49,17 @@ function ApplicationFormPage () {
         <button onClick = {voltar}>Voltar</button>
         <h1>Inscrever-se para uma viagem</h1>
 
-        <Formulario>
-            <select>
+        <Formulario onSubmit={enviarForm}>
+            <select name="trip" required>
                 <option>Escolha uma Viagem</option>
                 {lista}
             </select>
-            <input placeholder="Nome" name="name"/>
-            <input placeholder="Idade" name="age"/>
-            <input placeholder="Texto de Candidatura " name="applicationText"/>
-            <input placeholder="Profissão" name="profession"/>
-            <input placeholder="País" name="country"/>    
-                <Botao onClick={enviarForm}>Enviar</Botao>
+            <input placeholder="Nome" name="name" value={form.name} onChange={onChange} required/>
+            <input placeholder="Idade" name="age" value={form.age} onChange={onChange} required type="number"/>
+            <input placeholder="Texto de Candidatura " name="applicationText" value={form.applicationText} onChange={onChange} required/>
+            <input placeholder="Profissão" name="profession" value={form.profession} onChange={onChange} required/>
+            <input placeholder="País" name="country" value={form.country} onChange={onChange} required/>    
+                <Botao>Enviar</Botao>
         </Formulario>
     </div>
 }
