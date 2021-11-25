@@ -24,7 +24,8 @@ function CreateTripPage(){
     
     const enviarForm = (event) => { 
         event.prevent.default();
-        CreateTrip(form);
+        let token = localStorage.getItem["token"]
+        CreateTrip(form,token);
     }
     return <div>
         <button onClick = {voltar}>Voltar</button>
@@ -34,7 +35,7 @@ function CreateTripPage(){
             <input placeholder="Planeta" name="planet" value={form.planet} onChange={onChange} required/>
             <input placeholder="Data" name="date" value={form.date} onChange={onChange} required type="date"/>
             <input placeholder="Descrição" name="description" value={form.description} onChange={onChange} required/>
-            <input placeholder="Duração em dias" name="durationInDays" value={form.durationInDays} onChange={onChange} required/>    
+            <input placeholder="Duração em dias" name="durationInDays" value={form.durationInDays} onChange={onChange} required type="number"npm run build/>    
             <Botao>Enviar</Botao>
         </Formulario>
     </div>
