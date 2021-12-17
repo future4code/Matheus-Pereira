@@ -53,11 +53,39 @@ function ApplicationFormPage () {
                 <option>Escolha uma Viagem</option>
                 {lista}
             </select>
-            <input placeholder="Nome" name="name" value={form.name} onChange={onChange} required/>
-            <input placeholder="Idade" name="age" value={form.age} onChange={onChange} required type="number"/>
-            <input placeholder="Texto de Candidatura " name="applicationText" value={form.applicationText} onChange={onChange} required/>
-            <input placeholder="Profissão" name="profession" value={form.profession} onChange={onChange} required/>
-            <input placeholder="País" name="country" value={form.country} onChange={onChange} required/>    
+            <input 
+                placeholder="Nome" 
+                name="name" 
+                value={form.name} 
+                onChange={onChange}
+                pattern={"^.{3,}"}
+                title={"O nome deve ter no mínimo 3 letras"}
+                required/>
+            <input 
+                placeholder="Idade" 
+                name="age" 
+                value={form.age} 
+                onChange={onChange} 
+                required 
+                type="number"/>
+            <input 
+                placeholder="Texto de Candidatura " 
+                name="applicationText" 
+                value={form.applicationText} 
+                onChange={onChange}
+                pattern={"^.{30,}"}
+                title={"O nome deve ter no mínimo 30 caracteres"}
+                required/>
+            <input 
+                placeholder="Profissão" 
+                name="profession" 
+                value={form.profession} 
+                onChange={onChange}
+                pattern={"^.{10,}"}
+                title={"O nome deve ter no mínimo 10 caracteres"}
+                required/>
+            <input placeholder="País" name="country" value={form.country} onChange={onChange} required/> 
+               
                 <Botao>Enviar</Botao>
         </Formulario>
     </div>

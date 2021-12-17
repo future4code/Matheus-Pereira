@@ -20,7 +20,8 @@ export default function LoginPage () {
     }
 
 
-    const onClickLogin = async () => {
+    const onClickLogin = async (event) => {
+        event.preventDefault();
         const response = await Login({
             email,
             password
@@ -36,13 +37,14 @@ export default function LoginPage () {
     return (
         <>
             <Titulo>Login Page</Titulo>
-            <Formulario>
+            <Formulario onSubmit={onClickLogin}>
             <p>E-mail</p>
-            <input value={email} onChange={onChangeEmail} required/>
+            <input type="email" value={email} onChange={onChangeEmail} required/>
             <p>Senha</p>
-            <input type="password" value={password} onChange={onChangePassword} />
+            <input type="password" value={password} onChange={onChangePassword} required/>
+            <button>Login</button>
         </Formulario>
-        <button onClick={onClickLogin}>Login</button>
+        
         </>
     )
 }
