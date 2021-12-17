@@ -1,8 +1,8 @@
 import {Router} from "./routes/Router"
-import { Painel } from "./services/styled";
+import { Fundo } from "./services/styled";
 
 function App() {
-    return <Painel><Router/></Painel>
+    return <Fundo><Router/></Fundo>
 }
 
 export default App;

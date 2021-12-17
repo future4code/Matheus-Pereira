@@ -4,6 +4,18 @@ export const Painel = styled.div`
    display: flex;
    justify-content: center;
    flex-wrap:wrap;
+   
+`
+
+export const Fundo = styled.body `
+
+width: 100vw;
+display: flex;
+justify-content: center;
+flex-wrap:wrap;
+background-image: url("https://cdn.pixabay.com/photo/2020/11/07/01/40/abstract-5719530_960_720.jpg");
+color: white;
+background-size: cover;
 `
 
 export const ListUnit = styled.span`
